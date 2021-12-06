@@ -9,7 +9,6 @@ export function PublicRoute({ component: Component }) {
   
   return (
     <>
-      <h1>PUBLIC</h1>
       {isAuth ? <Navigate to="/contacts" /> : <Component />}
     </>
   );
