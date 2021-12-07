@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Loader from "react-loader-spinner";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from "../routes/PrivateRoute";
 import { PublicRoute } from "../routes/PublicRoute";
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ import { getIsAuth } from '../redux/auth/selectors';
 import { getToken } from '../redux/auth/selectors';
 import { getIsFetchingCurrent } from '../redux/auth/selectors';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = lazy(() => import('../components/Header/Header' /* webpackChunkName: "header-view" */));
 const HomeView = lazy(() => import('../views/HomeView/HomeView' /* webpackChunkName: "home-view" */));
@@ -26,9 +27,9 @@ function App() {
   const isAuth = useSelector(getIsAuth);
   const token = useSelector(getToken);
   const isFetchingCurrent = useSelector(getIsFetchingCurrent);
-  // console.log(isAuth);
   useEffect(() => {
-    token && dispatch(currentUser()); 
+    token && dispatch(currentUser());
+    // eslint-disable-next-line
   }, [dispatch]);
   
   
@@ -47,7 +48,7 @@ function App() {
           </Routes>}
       </Suspense>
       
-      <ToastContainer autoClose={2000} />
+      <ToastContainer autoClose={3000} />
       </div>
     );
 }

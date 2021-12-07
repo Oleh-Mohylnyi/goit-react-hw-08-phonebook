@@ -6,7 +6,6 @@ export const phonebookApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://619d65ca131c600017088eee.mockapi.io/api/v1' }),
     tagTypes: ['Contact'],
     endpoints: builder => {
-        console.log('builder',builder);
         return {
             fetchPhonebook: builder.query({
                 query: () => '/contacts',

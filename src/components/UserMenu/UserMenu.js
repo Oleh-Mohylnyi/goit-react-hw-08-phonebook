@@ -3,24 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {logout} from '../../redux/auth/operations'
 import { getUserName } from '../../redux/auth/selectors'
 import s from './userMenu.module.scss';
+import Button from '../Button/Button'
 
-// const styles = {
-//   container: {
-//     display: 'flex',
-//     alignItems: 'center',
-//   },
-//   avatar: {
-//     marginRight: 4,
-//   },
-//   name: {
-//     fontWeight: 700,
-//     marginRight: 12,
-//   },
-// };
 
 export default function UserMenu() {
   const name = useSelector(getUserName);
-  console.log(name);
     const dispatch = useDispatch();
     
     const handleLogout = () => {
@@ -28,19 +15,22 @@ export default function UserMenu() {
     };
 
   return (
-    <div>
+    <div className={s.list}>
       <span
         className={s.name}>
         {name}
       </span>
       <span
         className={s.span}>
-        's phonebook
+        's contacts
       </span>
 
-        <button type="button" onClick={handleLogout} className={s.button}>
-            Log out
-        </button>
+      <Button
+          title="Logout"
+          handleClick={() => handleLogout}
+          styleType="red" 
+          type="button"/>
+
     </div>
   );
 }

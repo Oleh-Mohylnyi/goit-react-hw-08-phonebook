@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 export function PublicRoute({ component: Component }) {
   const isAuth = useSelector(getIsAuth);
-  console.log('public',Component)
   
   return (
     <>

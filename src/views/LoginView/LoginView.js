@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from '../../redux/auth/operations'
 import { Link } from 'react-router-dom'
+import s from './loginView.module.scss';
 
 
 export default function LoginView() {
@@ -30,8 +31,8 @@ export default function LoginView() {
     };
 
     return (
-      <>
-        <h2>Login</h2>
+      <div className={s.container}>
+        <h2 className={s.title}>Login</h2>
 
         <form
                 onSubmit={handlSubmit}>
@@ -42,6 +43,7 @@ export default function LoginView() {
                 placeholder="email"
                 onChange={handleChange}
                 required
+                className={s.input}
             />
             <input
                 name="password"
@@ -50,18 +52,19 @@ export default function LoginView() {
                 placeholder="password"
                 onChange={handleChange}
                 required
+                className={s.input}
             />
           <button type="submit">login</button>
           
-          <span>dont have an account?</span>
+          <span className={s.text}>dont have an account?</span>
           <Link
-                // activeClassName={s.ActiveLink}
-                // className={s.Link}
-                to="/register">Register</Link>
-            </form>
+                to="/register"
+                className={s.link}     
+                >Register</Link>
+        </form>
             
 
             
-        </>
+        </div>
     )
 }

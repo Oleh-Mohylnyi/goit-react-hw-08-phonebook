@@ -3,7 +3,7 @@
 // import { combineReducers } from 'redux';
 import contactsReducer from './contacts/reducers';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import {
     persistReducer,
     persistStore,

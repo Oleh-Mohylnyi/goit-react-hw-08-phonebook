@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from 'react-toastify';
 
 const BASE_URL = `https://connections-api.herokuapp.com`;
 
@@ -12,6 +13,7 @@ export const register = createAsyncThunk(
                 body: JSON.stringify(user),
             });
             const data = await response.json();
+            toast(`Congratulations, you are registered!`);
             return data;
         } catch (err) {
             rejectWithValue({ error: err.message });
@@ -61,7 +63,6 @@ export const currentUser = createAsyncThunk(
                 headers: {Authorization: `Bearer ${token}`,},
             });
             const data = await response.json();
-            console.log(data);
             return data;
         } catch (err) {
         rejectWithValue(err.message);

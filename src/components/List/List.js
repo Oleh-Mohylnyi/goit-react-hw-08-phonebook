@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import ListItem from "../ListItem/ListItem";
 import s from './list.module.scss';
 import { useSelector } from 'react-redux';
 
 
 
-export default function List({ contacts }) {
-    const [editCheckbox, setEditCheckbox] = useState(false)
+export default function List({ contacts, statusCheckbox }) {
+
 
     const filter = useSelector(state => state.contacts.filter);
     
@@ -18,11 +18,7 @@ export default function List({ contacts }) {
     }
     const filtredContacts = filterContacts(contacts, filter)
     
-    let classNameCheckbox = 'checkboxEdit';
-    if (editCheckbox) {
-    classNameCheckbox += ' checkboxEditActive'
-    };
-
+    
     const backgroundColorItem = contact =>
         filtredContacts.indexOf(contact) % 2 === 0
             ? { backgroundColor: 'transparent' }
@@ -30,16 +26,7 @@ export default function List({ contacts }) {
 
     return (
         <div className={s.contactsList}>
-
-            <label className={classNameCheckbox}>
-                Edit
-                <input
-                    type="checkbox"
-                    className={s.hidden}
-                    checked={editCheckbox}
-                    onChange={() => setEditCheckbox(!editCheckbox)}
-                />
-            </label>
+            
             <ul className={s.list}>
                 {filtredContacts &&
                     filtredContacts.map(contact =>
@@ -47,7 +34,7 @@ export default function List({ contacts }) {
                             key={contact.id}
                             contact={contact}
                             backgroundColorItem={backgroundColorItem(contact)}
-                            statusCheckbox={editCheckbox}
+                            statusCheckbox={statusCheckbox}
                         />
                     )}
             </ul>

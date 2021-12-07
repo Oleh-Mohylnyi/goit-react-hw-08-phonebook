@@ -26,7 +26,7 @@ body {
 }
 
 .btn_delete {
-    height: 22px;
+height: 22px;
 color:rgb(80, 80, 80);
 background-color: transparent;
 border-radius: 5px;
@@ -41,16 +41,20 @@ border: 1px solid rgb(80, 80, 80);
 
 
 .checkboxEdit {
-    display: block;
-    margin-left: auto;
-    margin-right: 5px;
-    position: absolute;
+    /* display: flex; */
+    /* margin-left: auto; */
+    /* margin-right: 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    /* position: absolute;
     right: 0;
-    top: -95px;
+    top: -95px; */
     height: 22px;
-    width: 65px;
+    /* width: 65px; */
     border-radius: 5px;
     border: 1px solid rgb(80, 80, 80);
+    cursor: pointer;
+    
 }
 
 .checkboxEdit:hover {
@@ -65,3 +69,4 @@ border: 1px solid rgb(80, 80, 80);
     background-color: blue;
     border: 1px solid blue;
 }
+

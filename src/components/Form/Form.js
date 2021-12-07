@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import s from './form.module.scss';
 import { useAddContactMutation, useFetchPhonebookQuery } from "../../redux/contacts/slice";
-
+import Button from "../Button/Button";
+import { toast } from 'react-toastify';
 
 export default function Form() {
     
@@ -38,18 +39,19 @@ export default function Form() {
             addContact({ name, number })
         } else {
             if (contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
-                alert(`${name} is already in contacts`);
+                toast(`${name} is already in contacts`);
             } else {
                 if (name === '' || number === '') {
-                    alert("Do not save contact without a name or number");
+                    toast(`Do not save contact without a name or number`);
                 } else {
                     if (!regName.test(name)) {
-                        alert("Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п.");
+                        toast("Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п.");
                     } else {
                         if (!regNumber.test(number)) {
-                            alert("Номер телефона должен состоять из цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +");
+                            toast("Номер телефона должен состоять из цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +");
                         } else {
                             addContact({ name, number });
+                            toast(`contact "${name}" added successfully`);
                         }
                     }
                 }
@@ -88,12 +90,13 @@ export default function Form() {
                 />
             </label>
             <br />
-            <button
-                type="submit"
-                className={s.btn}
-                onClick={handleSubmit}>
-                Add contact
-            </button>
+            <div className={s.btnSubm}>
+            <Button
+                title="Add contact"
+                handleClick={() => handleSubmit}
+                styleType="blue"
+                type="submit"/>
+            </div>
             
         </form>
     );

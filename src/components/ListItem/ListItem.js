@@ -3,6 +3,7 @@ import s from './listItem.module.scss'
 import PropTypes from 'prop-types'
 import { useDeleteContactMutation } from "../../redux/contacts/slice";
 
+
 export default function ListItem({
     contact,
     backgroundColorItem,
